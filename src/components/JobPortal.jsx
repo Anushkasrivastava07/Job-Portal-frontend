@@ -13,7 +13,7 @@ const JobPortal = () => {
 
   // Backend se jobs laane ke liye
   useEffect(() => {
-    fetch('http://localhost:5000/jobs')
+    fetch('https://job-portal-backend-rz5o.onrender.com/jobs')
       .then(res => res.json())
       .then(data => {
         console.log("Backend se data aaya:", data);
@@ -29,7 +29,7 @@ const JobPortal = () => {
   // Nayi job add karne ke liye 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/jobs', {
+    fetch('https://job-portal-backend-rz5o.onrender.com/jobs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
@@ -50,7 +50,7 @@ const JobPortal = () => {
   };
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/jobs/${id}`,{
+      await fetch(`https://job-portal-backend-rz5o.onrender.com/jobs/${id}`,{
         method: 'DELETE'
       });
       setJobs(jobs.filter(job => job.id !== id));
