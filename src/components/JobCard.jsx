@@ -71,7 +71,7 @@ function JobCard({ job, onDelete }) {
         Apply Now
       </button>
       <button
-      Click={(e) => onDelete(job._id)}
+      onClick={(e) => onDelete(job._id, e)}
       style={{
         padding: "8px 16px",
         background:"#455d81",
