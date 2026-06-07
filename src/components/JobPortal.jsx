@@ -140,7 +140,8 @@ const JobPortal = () => {
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job) => (
             <JobCard 
-            key={job.id} job={job}
+            key={job._id} 
+            job={job}
             onDelete={handleDelete} />
           ))
         ) : (
