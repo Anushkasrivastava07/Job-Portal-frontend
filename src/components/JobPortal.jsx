@@ -41,7 +41,7 @@ const JobPortal = () => {
     })
     .then(res => res.json())
     .then(data => {
-      setJobs([...jobs, data]); 
+      setJobs(prevJobs => [...prevJobs, data]); 
       setTitle(""); 
       setCompany(""); 
       setLocation(""); 
@@ -53,7 +53,7 @@ const JobPortal = () => {
       await fetch(`https://job-portal-backend-rz5o.onrender.com/jobs/${id}`,{
         method: 'DELETE'
       });
-      setJobs(jobs.filter(job => job.id !== id));
+      setJobs(prevJobs => prevJobs.filter(job => job._id !== id));
       console.log(" Job deleted from frontened");
     } catch (error) {
       console.error("Error deleting job:",error);
