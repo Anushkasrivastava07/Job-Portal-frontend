@@ -59,8 +59,9 @@ const JobPortal = () => {
   };
 
   const handleDelete = async (id, e) => {
+    console.log("Handle Delete Called", id);
     e.preventDefault();
-
+    e.stopPropagation();
     try {
       await fetch(
         `https://job-portal-backend-rz5o.onrender.com/jobs/${id}`,
