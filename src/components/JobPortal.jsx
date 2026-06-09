@@ -24,7 +24,7 @@ const JobPortal = () => {
       })
       .then(data => {
         console.log("Backend se data aaya:", data);
-        setJobs(data);
+        setJobs(data.data);
         setLoading(false);
       })
       .catch(err => {
