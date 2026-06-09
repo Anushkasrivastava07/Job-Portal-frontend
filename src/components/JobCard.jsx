@@ -66,7 +66,7 @@ function JobCard({ job, onDelete }) {
       <p
         style={{
           margin: "4px 0 12px 0",
-          color: "#27ae60",
+          color: "#465a82",
           fontSize: "14px",
           fontWeight: "600",
         }}
