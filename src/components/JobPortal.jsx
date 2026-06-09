@@ -11,6 +11,7 @@ const JobPortal = () => {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
+  const [salary, setSalary] = useState("");
 
   // Backend se jobs laane ke liye
   useEffect(() => {
@@ -45,7 +46,8 @@ const JobPortal = () => {
         title,
         company,
         location,
-        type: "Full-time"
+        type: "Full-time",
+        salary: parseInt(salary)
       })
     })
       .then(res => res.json())
@@ -176,6 +178,20 @@ const JobPortal = () => {
             border: "1px solid #ccc"
           }}
         />
+        <input
+  type="number"
+  placeholder="Salary"
+  value={salary}
+  onChange={(e) => setSalary(e.target.value)}
+  required
+  style={{
+    margin: "5px",
+    padding: "10px",
+    width: "200px",
+    borderRadius: "4px",
+    border: "1px solid #ccc"
+  }}
+  />
 
         <button
           type="submit"
