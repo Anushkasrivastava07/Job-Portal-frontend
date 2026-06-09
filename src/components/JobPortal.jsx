@@ -17,7 +17,7 @@ const JobPortal = () => {
     setLoading(true);
     setError(null);
 
-    fetch('https://job-portal-backend-rz5o.onrender.com/jobs')
+    fetch('http://localhost:5000/jobs')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch jobs');
         return res.json();
@@ -38,7 +38,7 @@ const JobPortal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('https://job-portal-backend-rz5o.onrender.com/jobs', {
+    fetch('http://localhost:5000/jobs', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -64,7 +64,7 @@ const JobPortal = () => {
     e.stopPropagation();
     try {
       await fetch(
-        `https://job-portal-backend-rz5o.onrender.com/jobs/${id}`,
+        `http://localhost:5000/jobs/${id}`,
         {
           method: 'DELETE'
         }
