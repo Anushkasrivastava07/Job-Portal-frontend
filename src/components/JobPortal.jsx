@@ -47,7 +47,7 @@ const JobPortal = () => {
         company,
         location,
         type: "Full-time",
-        salary: parseInt(salary)
+        salary: salary ? parseInt(salary) : 0
       })
     })
       .then(res => res.json())
@@ -56,6 +56,7 @@ const JobPortal = () => {
         setTitle("");
         setCompany("");
         setLocation("");
+        setSalary(""); 
       })
       .catch(err => console.log("Add job error:", err));
   };
