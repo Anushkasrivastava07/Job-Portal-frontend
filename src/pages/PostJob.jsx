@@ -6,7 +6,8 @@ function PostJob() {
     title: '', 
     company: '', 
     location: '', 
-    type: ''
+    type: '',
+    salary: ''
   });
   const navigate = useNavigate();
 
@@ -60,7 +61,15 @@ function PostJob() {
           onChange={e => setForm({...form, type: e.target.value})} 
           required
         />
-        <button 
+        <input 
+          type="number"
+          style={{padding: "10px", fontSize: "16px"}}
+          placeholder="Salary (in rupees)" 
+          value={form.salary}
+          onChange={e => setForm({...form, salary: Number(e.target.value)})} 
+          required
+        />
+        <button
           type="submit" 
           style={{padding: "12px", background: "#3b82f6", color: "white", border: "none", cursor: "pointer", fontSize: "16px"}}
         >

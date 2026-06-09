@@ -42,12 +42,36 @@ function JobCard({ job, onDelete }) {
       {/* Location */}
       <p
         style={{
-          margin: "4px 0 12px 0",
+          margin: "4px 0",
           color: "#777",
           fontSize: "13px",
         }}
       >
          {job.location}
+      </p>
+
+      {/* Job Type */}
+      <p
+        style={{
+          margin: "4px 0",
+          color: "#666",
+          fontSize: "13px",
+          fontWeight: "500",
+        }}
+      >
+        <strong>Type:</strong> {job.type}
+      </p>
+
+      {/* Salary */}
+      <p
+        style={{
+          margin: "4px 0 12px 0",
+          color: "#27ae60",
+          fontSize: "14px",
+          fontWeight: "600",
+        }}
+      >
+        <strong>₹{job.salary?.toLocaleString() || "Not specified"}</strong>
       </p>
 
       {/* Button */}
