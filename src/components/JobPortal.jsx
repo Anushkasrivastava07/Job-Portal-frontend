@@ -18,7 +18,7 @@ const JobPortal = () => {
     setLoading(true);
     setError(null);
 
-    fetch('http://localhost:5000/jobs')
+    fetch(`${import.meta.env.VITE_API_URL}/jobs`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch jobs');
         return res.json();
@@ -39,7 +39,7 @@ const JobPortal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/jobs', {
+    fetch(`${import.meta.env.VITE_API_URL}/jobs`,{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -47,7 +47,7 @@ const JobPortal = () => {
         company,
         location,
         type: "Full-time",
-        salary: salary ? parseInt(salary) : 0
+        salary: salary ? parseInt(salary) : null
       })
     })
       .then(res => res.json())
@@ -66,8 +66,7 @@ const JobPortal = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      await fetch(
-        `http://localhost:5000/jobs/${id}`,
+        await fetch(`http://localhost:5000/jobs/${id}`,
         {
           method: 'DELETE'
         }
