@@ -19,23 +19,23 @@
 
 .hero {
   position: relative;
+}
 
-  .framework {
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.2);
+.hero .framework {
+  transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.2);
+}
+
+.hero .vite {
+  transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.7);
+}
+
+@media (max-width: 600px) {
+  .hero .framework {
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(0.9);
   }
 
-  .vite {
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.7);
-  }
-
-  @media (max-width: 600px) {
-    .framework {
-      transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(0.9);
-    }
-
-    .vite {
-      transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.5);
-    }
+  .hero .vite {
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.5);
   }
 }
 
