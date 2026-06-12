@@ -127,7 +127,7 @@ const JobPortal = () => {
           padding: "20px",
           border: "1px solid #ddd",
           borderRadius: "8px",
-          background: "2d2d2d"
+          background: "#2d2d2d"
         }}
       >
         <h3 style={{ marginTop: "0" }}>
