@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import JobCard from './JobCard';
 
-const JobPortal = () => {
+  const JobPortal = () => {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
@@ -13,6 +13,7 @@ const JobPortal = () => {
   const [location, setLocation] = useState("");
   const [salary, setSalary] = useState("");
   const [type, setType] = useState("SELECT");
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   
 
   // Backend se jobs laane ke liye
@@ -20,7 +21,7 @@ const JobPortal = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`${import.meta.env.VITE_API_URL}/jobs`)
+    fetch(`${API_URL}/jobs`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch jobs');
         return res.json();
@@ -41,7 +42,7 @@ const JobPortal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`${import.meta.env.VITE_API_URL}/jobs`,{
+    fetch(`${API_URL}/jobs`,{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -68,7 +69,7 @@ const JobPortal = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-        await fetch(`${import.meta.env.VITE_API_URL}/jobs/${id}`,
+        await fetch(`${API_URL}/jobs/${id}`,
         {
           method: 'DELETE'
         }
