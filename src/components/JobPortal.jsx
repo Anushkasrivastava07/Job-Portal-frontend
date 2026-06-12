@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import JobCard from './JobCard';
 
-  const JobPortal = () => {
+const JobPortal = () => {
   const [jobs, setJobs] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
@@ -12,16 +12,13 @@ import JobCard from './JobCard';
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [salary, setSalary] = useState("");
-  const [type, setType] = useState("SELECT");
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-  
 
   // Backend se jobs laane ke liye
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    fetch(`${API_URL}/jobs`)
+    fetch(`${import.meta.env.VITE_API_URL}/jobs`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch jobs');
         return res.json();
@@ -42,14 +39,14 @@ import JobCard from './JobCard';
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`${API_URL}/jobs`,{
+    fetch(`${import.meta.env.VITE_API_URL}/jobs`,{
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         title,
         company,
         location,
-        type,
+        type: "Full-time",
         salary: salary ? parseInt(salary) : null
       })
     })
@@ -69,7 +66,7 @@ import JobCard from './JobCard';
     e.preventDefault();
     e.stopPropagation();
     try {
-        await fetch(`${API_URL}/jobs/${id}`,
+        await fetch(`http://localhost:5000/jobs/${id}`,
         {
           method: 'DELETE'
         }
@@ -130,7 +127,7 @@ import JobCard from './JobCard';
           padding: "20px",
           border: "1px solid #ddd",
           borderRadius: "8px",
-          background: "#2d2d2d"
+          background: "2d2d2d"
         }}
       >
         <h3 style={{ marginTop: "0" }}>
@@ -166,71 +163,50 @@ import JobCard from './JobCard';
             border: "1px solid #ccc"
           }}
         />
-        <input 
-        type="text"
-        placeholder="location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        required
-        style={{
-          margin: "5px",
-          padding: "10px",
-          width: "200px",
-          borderRadius: "4px",
-          border: "1px solid #ccc"
-        }}
-        />
-        <div className="form-row">
-  <select
-    value={type}
-    onChange={(e) => setType(e.target.value)}
-    required
-    className="flex-1 p-2 border rounded"
-  >
-    <option value="Full-Time">Full-time</option>
-    <option value="Part-time">Part-time</option>
-    <option value="Internship">Internship</option>
-    <option value="Contract">Contract</option>
-    <option value="Full stack">Full stack</option>
-    style={{
-          margin: "5px",
-          padding: "10px",
-          width: "200px",
-          borderRadius: "4px",
-          border: "1px solid #ccc"
-        }}
-  </select>
 
-  <input
-    type="number"
-    placeholder="Salary"
-    value={salary}
-    onChange={(e) => setSalary(e.target.value)}
-    required
-    style={{
-          margin: "5px",
-          padding: "10px",
-          width: "200px",
-          borderRadius: "4px",
-          border: "1px solid #ccc"
-        }}
-    className="flex-1 p-2 border rounded"
+        <input
+          type="text"
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          required
+          style={{
+            margin: "5px",
+            padding: "10px",
+            width: "200px",
+            borderRadius: "4px",
+            border: "1px solid #ccc"
+          }}
+        />
+        <input
+  type="number"
+  placeholder="Salary"
+  value={salary}
+  onChange={(e) => setSalary(e.target.value)}
+  required
+  style={{
+    margin: "5px",
+    padding: "10px",
+    width: "200px",
+    borderRadius: "4px",
+    border: "1px solid #ccc"
+  }}
   />
 
-  <button
-    type="submit"
-    style={{
-          margin: "5px",
-          padding: "10px",
-          width: "200px",
-          borderRadius: "4px",
-          border: "1px solid #ccc"
-        }}
-    className="flex flex-row gap-2"
-  >
-    Add Job
-  </button>
-</div>
+        <button
+          type="submit"
+          style={{
+            margin: "5px",
+            padding: "10px 25px",
+            borderRadius: "4px",
+            border: "none",
+            background: "#007bff",
+            color: "white",
+            cursor: "pointer"
+          }}
+        >
+          Add Job
+        </button>
       </form>
 
       {/* Search Box */}
