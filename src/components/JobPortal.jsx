@@ -199,6 +199,13 @@ const JobPortal = () => {
     value={salary}
     onChange={(e) => setSalary(e.target.value)}
     required
+    style={{
+          margin: "5px",
+          padding: "10px",
+          width: "200px",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+        }}
     className="flex-1 p-2 border rounded"
   />
 
