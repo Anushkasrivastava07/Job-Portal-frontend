@@ -179,37 +179,32 @@ const JobPortal = () => {
           border: "1px solid #ccc"
         }}
         />
-        <select 
-        value={type}
-        onChange={(e) => setType(e.target.Value)}
-        reuired
-        style={{
-          margin: "5px",
-          padding: "10px",
-          width: "200px",
-          borderRadius: "4px",
-          border: "1px solid #ccc"
-        }}
-        >
-       <option value="Full-Time">Full-time</option>
-       <option value="Part-time">Part-time</option>
-       <option value="Internship">Internship</option>
-       <option value="Contract">Contract</option>
-       <option value="Full stack">Full stack</option>
-        </select>
+        <div className="flex flex-row gap-2 items-center">
+  <select
+    value={type}
+    onChange={(e) => setType(e.target.value)}
+    required
+    className="flex-1 p-2 border rounded"
+  >
+    <option value="Full-Time">Full-time</option>
+    <option value="Part-time">Part-time</option>
+    <option value="Internship">Internship</option>
+    <option value="Contract">Contract</option>
+    <option value="Full stack">Full stack</option>
+  </select>
 
-        <div className="flex flex-row gap-2">
-  <input 
-    type="number" 
-    placeholder="Salary" 
+  <input
+    type="number"
+    placeholder="Salary"
     value={salary}
     onChange={(e) => setSalary(e.target.value)}
-    required 
+    required
     className="flex-1 p-2 border rounded"
   />
-  <button 
-    type="submit" 
-    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
+
+  <button
+    type="submit"
+    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex-shrink-0"
   >
     Add Job
   </button>
