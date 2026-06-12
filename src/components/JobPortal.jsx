@@ -191,6 +191,13 @@ const JobPortal = () => {
     <option value="Internship">Internship</option>
     <option value="Contract">Contract</option>
     <option value="Full stack">Full stack</option>
+    style={{
+          margin: "5px",
+          padding: "10px",
+          width: "200px",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+        }}
   </select>
 
   <input
@@ -211,6 +218,13 @@ const JobPortal = () => {
 
   <button
     type="submit"
+    style={{
+          margin: "5px",
+          padding: "10px",
+          width: "200px",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+        }}
     className="flex flex-row gap-2"
   >
     Add Job
