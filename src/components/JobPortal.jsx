@@ -66,7 +66,7 @@ const JobPortal = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-        await fetch(`http://localhost:5000/jobs/${id}`,
+        await fetch(`${import.meta.env.VITE_API_URL}/jobs/${id}`,
         {
           method: 'DELETE'
         }
