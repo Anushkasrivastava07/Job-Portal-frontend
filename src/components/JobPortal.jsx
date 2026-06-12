@@ -178,35 +178,22 @@ const JobPortal = () => {
             border: "1px solid #ccc"
           }}
         />
-        <input
-  type="number"
-  placeholder="Salary"
-  value={salary}
-  onChange={(e) => setSalary(e.target.value)}
-  required
-  style={{
-    margin: "5px",
-    padding: "10px",
-    width: "200px",
-    borderRadius: "4px",
-    border: "1px solid #ccc"
-  }}
+        <div className="flex flex-col sm:flex-row gap-2">
+  <input 
+    type="number" 
+    placeholder="Salary" 
+    value={salary}
+    onChange={(e) => setSalary(e.target.value)}
+    required 
+    className="flex-1 p-2 border rounded"
   />
-
-        <button
-          type="submit"
-          style={{
-            margin: "5px",
-            padding: "10px 25px",
-            borderRadius: "4px",
-            border: "none",
-            background: "#007bff",
-            color: "white",
-            cursor: "pointer"
-          }}
-        >
-          Add Job
-        </button>
+  <button 
+    type="submit" 
+    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
+  >
+    Add Job
+  </button>
+</div>
       </form>
 
       {/* Search Box */}
