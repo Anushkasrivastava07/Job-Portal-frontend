@@ -12,7 +12,7 @@ const JobPortal = () => {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [salary, setSalary] = useState("");
-  const [type, setType] = useState("Full stack");
+  const [type, setType] = useState("SELECT");
   
 
   // Backend se jobs laane ke liye
@@ -179,7 +179,7 @@ const JobPortal = () => {
           border: "1px solid #ccc"
         }}
         />
-        <div className="flex flex-row gap-2 items-center">
+        <div className="form-row">
   <select
     value={type}
     onChange={(e) => setType(e.target.value)}
@@ -204,7 +204,7 @@ const JobPortal = () => {
 
   <button
     type="submit"
-    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex-shrink-0"
+    className="flex flex-row gap-2"
   >
     Add Job
   </button>
