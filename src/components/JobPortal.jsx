@@ -12,6 +12,8 @@ const JobPortal = () => {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [salary, setSalary] = useState("");
+  const [type, setType] = useState("Full stack");
+  
 
   // Backend se jobs laane ke liye
   useEffect(() => {
@@ -46,7 +48,7 @@ const JobPortal = () => {
         title,
         company,
         location,
-        type: "Full-time",
+        type,
         salary: salary ? parseInt(salary) : null
       })
     })
@@ -163,22 +165,40 @@ const JobPortal = () => {
             border: "1px solid #ccc"
           }}
         />
-
-        <input
-          type="text"
-          placeholder="Location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          required
-          style={{
-            margin: "5px",
-            padding: "10px",
-            width: "200px",
-            borderRadius: "4px",
-            border: "1px solid #ccc"
-          }}
+        <input 
+        type="text"
+        placeholder="location"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        required
+        style={{
+          margin: "5px",
+          padding: "10px",
+          width: "200px",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+        }}
         />
-        <div className="flex flex-col sm:flex-row gap-2">
+        <select 
+        value={type}
+        onChange={(e) => setType(e.target.Value)}
+        reuired
+        style={{
+          margin: "5px",
+          padding: "10px",
+          width: "200px",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+        }}
+        >
+       <option value="Full-Time">Full-time</option>
+       <option value="Part-time">Part-time</option>
+       <option value="Internship">Internship</option>
+       <option value="Contract">Contract</option>
+       <option value="Full stack">Full stack</option>
+        </select>
+
+        <div className="flex flex-row gap-2">
   <input 
     type="number" 
     placeholder="Salary" 
