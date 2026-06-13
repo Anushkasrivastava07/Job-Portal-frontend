@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f4f7fc;
+  background: #f5f7fa; /* soft light grey - easier on eyes */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #1f2937;
   line-height: 1.6;
@@ -14,9 +14,10 @@ body {
 
 /* ===== Navbar ===== */
 nav {
-  background: #1e3a8a;
+  width: 100%;
+  background: #0f172a; /* dark navy - more professional than blue */
   color: white;
-  padding: 16px 30px;
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,8 +25,9 @@ nav {
 }
 
 nav h2 {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
+  color: #fff; /* fix: make sure logo is visible */
 }
 
 nav div {
@@ -34,36 +36,40 @@ nav div {
 }
 
 nav a {
-  color: white;
+  color: #e2e8f0;
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
 }
 
 nav a:hover {
-  color: #bfdbfe;
+  color: #fff;
 }
 
 /* ===== Main Container ===== */
 .form-container {
-  max-width: 500px;
-  margin: 0px auto;
+  width: 100%;
+  max-width: 800px; /* increased from 500px */
+  margin: 0 auto;
   background: white;
-  padding: 0 16px;
-  border-radius: 8px;
+  padding: 24px 20px; /* added top/bottom padding */
+  border-radius: 12px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 /* ===== Headings ===== */
 h1 {
   text-align: center;
   margin-bottom: 25px;
-  color: #1e3a8a;
+  color: #0f172a;
+  font-size: 32px;
 }
 
 h2 {
   margin-bottom: 15px;
-  color: #1e3a8a;
+  color: #0f172a;
 }
 
 /* ===== Form Row ===== */
@@ -73,6 +79,7 @@ h2 {
   width: 100%;
   margin-bottom: 15px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* ===== Inputs ===== */
@@ -83,17 +90,17 @@ textarea {
   min-width: 0;
   padding: 12px;
   border: 1px solid #d1d5db;
-  border-radius: 4px;
+  border-radius: 8px; /* increased from 4px for modern look */
   font-size: 15px;
   outline: none;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .form-row input:focus,
 .form-row select:focus,
 textarea:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 6px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* ===== Buttons ===== */
@@ -105,12 +112,11 @@ button {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 button:hover {
   background: #1d4ed8;
-  transform: translateY(-1px);
 }
 
 /* ===== Job Cards ===== */
@@ -119,23 +125,24 @@ button:hover {
   border-radius: 12px;
   padding: 18px;
   margin-bottom: 18px;
-  border-left: 5px solid #2563eb;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
+  border-left: 4px solid #2563eb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: 0.2s;
 }
 
 .job-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 .job-card h3 {
-  color: #1e3a8a;
+  color: #0f172a;
   margin-bottom: 8px;
 }
 
 .job-card p {
   margin: 5px 0;
+  color: #4b5563;
 }
 
 /* ===== Search Bar ===== */
@@ -152,40 +159,27 @@ button:hover {
   nav {
     flex-direction: column;
     gap: 12px;
-    text-align: center;
-  }
-
-  nav h2 {
-    font-size: 22px;
+    padding: 14px 16px;
   }
 
   nav div {
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .form-container {
-    width: 95%;
-    padding: 18px;
+    margin: 16px;
+    padding: 18px 16px;
+    max-width: 100%;
   }
 
   .form-row {
-    gap: 8px;
-  }
-
-  .form-row input,
-  .form-row select {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  button {
-    padding: 10px 16px;
-    font-size: 14px;
+    flex-direction: column; /* stack inputs on mobile */
+    gap: 10px;
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 }
 
@@ -195,19 +189,9 @@ button:hover {
     font-size: 20px;
   }
 
-  .form-row {
-    gap: 6px;
-  }
-
-  .form-row input,
-  .form-row select {
-    padding: 8px;
-    font-size: 13px;
-  }
-
-  button {
-    padding: 8px 12px;
-    font-size: 13px;
+  .form-container {
+    margin: 12px;
+    padding: 16px 14px;
   }
 
   h1 {
