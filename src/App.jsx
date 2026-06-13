@@ -17,7 +17,7 @@ function App() {
         boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
         flexWrap: "wrap"
       }}>
-        <h2 style={{margin: 0, fontSize: "24px", fontWeight: "700"}}>
+        <h2 style={{margin: 0, fontSize: "24px", fontWeight: "700",color: "#ffffff"}}>
           DevJobs
         </h2>
         <div style={{display: "flex", gap: "15px"}}>

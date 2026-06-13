@@ -57,7 +57,7 @@ const JobPortal = () => {
         setTitle("");
         setCompany("");
         setLocation("");
-        setType:("");
+        setType("");
         setSalary(""); 
       })
       .catch(err => console.log("Add job error:", err));
@@ -125,13 +125,13 @@ const JobPortal = () => {
         onSubmit={handleSubmit}
         style={{
           marginBottom: "30px",
-          padding: "20px",
+          padding: "25px",
           border: "1px solid #ddd",
           borderRadius: "8px",
           background: "#2d2d2d",
           display: "flex",
           flexDirection: "column",
-          gap: "10px"
+          gap: "15px"
         }}
       >
         <h3 style={{ marginTop: "0" }}>
@@ -145,11 +145,12 @@ const JobPortal = () => {
           onChange={(e) => setTitle(e.target.value)}
           required
           style={{
-            margin: "5px",
+            margin: "0",
             padding: "10px",
             width: "100%",
             borderRadius: "4px",
-            border: "1px solid #ccc"
+            border: "1px solid #ccc",
+            boxSizing: "borderbox"
           }}
         />
 
@@ -160,11 +161,12 @@ const JobPortal = () => {
           onChange={(e) => setCompany(e.target.value)}
           required
           style={{
-            margin: "5px",
+            margin: "0",
             padding: "10px",
             width: "100%",
             borderRadius: "4px",
-            border: "1px solid #ccc"
+            border: "1px solid #ccc",
+            boxSizing: "border-box"
           }}
         />
 
@@ -175,16 +177,27 @@ const JobPortal = () => {
           onChange={(e) => setLocation(e.target.value)}
           required
           style={{
-            margin: "5px",
+            margin: "0",
             padding: "10px",
             width: "100%",
             borderRadius: "4px",
-            border: "1px solid #ccc"
+            border: "1px solid #ccc",
+            boxSizing: "border-box"
           }}
         />
         <select
   value={type}
   onChange={(e) => setType(e.target.value)}
+  required
+  style={{
+    width: "100%",
+    padding: "10px",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
+    boxSizing: "border-box",
+    background: "white",
+    color: "#666"
+  }}
 >
   <option value="">Select Type</option>
   <option value="Full-time">Full-time</option>
@@ -199,11 +212,12 @@ const JobPortal = () => {
           onChange={(e) => setSalary(e.target.value)}
           required
           style={{
-          margin: "5px",
+          margin: "0",
           padding: "10px",
           width: "100%",
           borderRadius: "4px",
-          border: "1px solid #ccc"
+          border: "1px solid #ccc",
+          boxSizing: "border-box"
           }}
   />
 
