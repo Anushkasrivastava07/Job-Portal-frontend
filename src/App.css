@@ -46,11 +46,11 @@ nav a:hover {
 
 /* ===== Main Container ===== */
 .form-container {
-  max-width: 1200px;
-  margin: 30px auto;
+  max-width: 500px;
+  margin: 0px auto;
   background: white;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 0 16px;
+  border-radius: 8px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
@@ -83,7 +83,7 @@ textarea {
   min-width: 0;
   padding: 12px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 15px;
   outline: none;
   transition: 0.3s;
