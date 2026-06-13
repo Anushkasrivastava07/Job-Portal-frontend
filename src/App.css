@@ -12,10 +12,15 @@ body {
   line-height: 1.6;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* ===== Navbar ===== */
 nav {
   width: 100%;
-  background: #0f172a; /* dark navy - more professional than blue */
+  background: #d7dae1; /* dark navy - more professional than blue */
   color: white;
   padding: 16px 20px;
   display: flex;

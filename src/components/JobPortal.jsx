@@ -12,6 +12,7 @@ const JobPortal = () => {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [salary, setSalary] = useState("");
+  const [type, setType] = useState("");
 
   // Backend se jobs laane ke liye
   useEffect(() => {
@@ -46,7 +47,7 @@ const JobPortal = () => {
         title,
         company,
         location,
-        type: "Full-time",
+        type,
         salary: salary ? parseInt(salary) : null
       })
     })
@@ -56,6 +57,7 @@ const JobPortal = () => {
         setTitle("");
         setCompany("");
         setLocation("");
+        setType:("");
         setSalary(""); 
       })
       .catch(err => console.log("Add job error:", err));
@@ -126,7 +128,10 @@ const JobPortal = () => {
           padding: "20px",
           border: "1px solid #ddd",
           borderRadius: "8px",
-          background: "2d2d2d"
+          background: "#2d2d2d",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px"
         }}
       >
         <h3 style={{ marginTop: "0" }}>
@@ -142,7 +147,7 @@ const JobPortal = () => {
           style={{
             margin: "5px",
             padding: "10px",
-            width: "200px",
+            width: "100%",
             borderRadius: "4px",
             border: "1px solid #ccc"
           }}
@@ -157,7 +162,7 @@ const JobPortal = () => {
           style={{
             margin: "5px",
             padding: "10px",
-            width: "200px",
+            width: "100%",
             borderRadius: "4px",
             border: "1px solid #ccc"
           }}
@@ -172,24 +177,34 @@ const JobPortal = () => {
           style={{
             margin: "5px",
             padding: "10px",
-            width: "200px",
+            width: "100%",
             borderRadius: "4px",
             border: "1px solid #ccc"
           }}
         />
+        <select
+  value={type}
+  onChange={(e) => setType(e.target.value)}
+>
+  <option value="">Select Type</option>
+  <option value="Full-time">Full-time</option>
+  <option value="Part-time">Part-time</option>
+  <option value="Internship">Internship</option>
+  <option value="Remote">Remote</option>
+</select>
         <input
-  type="number"
-  placeholder="Salary"
-  value={salary}
-  onChange={(e) => setSalary(e.target.value)}
-  required
-  style={{
-    margin: "5px",
-    padding: "10px",
-    width: "200px",
-    borderRadius: "4px",
-    border: "1px solid #ccc"
-  }}
+          type="number"
+          placeholder="Salary"
+          value={salary}
+          onChange={(e) => setSalary(e.target.value)}
+          required
+          style={{
+          margin: "5px",
+          padding: "10px",
+          width: "100%",
+          borderRadius: "4px",
+          border: "1px solid #ccc"
+          }}
   />
 
         <button

@@ -7,13 +7,15 @@ function JobCard({ job, onDelete }) {
     <div
       style={{
         background: "white",
-        width: "360px",
+        width: "100%",
+        maxWidth: "360px",
         margin: "16px auto",
         padding: "18px",
         borderRadius: "14px",
         boxShadow: "0 8px 20px rgba(0,0,0,0.10)",
         fontFamily: "Arial",
         border: "1px solid #eee",
+        boxSizing: "border-box"
       }}
     >
       {/* Title */}
@@ -97,6 +99,7 @@ function JobCard({ job, onDelete }) {
       <button
       onClick={(e) => onDelete(job._id, e)}
       style={{
+        width: "100%",
         padding: "8px 16px",
         background:"#455d81",
         color: "white",

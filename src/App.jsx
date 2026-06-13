@@ -10,16 +10,17 @@ function App() {
       <nav style={{
         display: "flex", 
         justifyContent: "space-between", 
-        padding: "16px 40px", 
+        padding: "16px", 
         background: "#111827", 
         color: "white",
         alignItems: "center",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        flexWrap: "wrap"
       }}>
         <h2 style={{margin: 0, fontSize: "24px", fontWeight: "700"}}>
           DevJobs
         </h2>
-        <div style={{display: "flex", gap: "30px"}}>
+        <div style={{display: "flex", gap: "15px"}}>
           <Link 
             to="/" 
             style={{color: "white", textDecoration: "none", fontSize: "16px"}}
