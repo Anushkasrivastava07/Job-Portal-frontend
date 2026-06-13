@@ -150,7 +150,7 @@ const JobPortal = () => {
             width: "100%",
             borderRadius: "4px",
             border: "1px solid #ccc",
-            boxSizing: "borderbox"
+            boxSizing: "border-box"
           }}
         />
 
