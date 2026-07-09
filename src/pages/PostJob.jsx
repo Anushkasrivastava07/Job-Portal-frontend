@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { apiFetch } from '../api';
 
 function PostJob() {
   const [form, setForm] = useState({
@@ -11,19 +12,21 @@ function PostJob() {
   });
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/jobs', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(form)
-    })
-    .then(res => res.json())
-    .then(() => {
+    try {
+      const res = await apiFetch(`${import.meta.env.VITE_API_URL}/jobs`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(form)
+      }, 8000);
+
+      await res.json();
       alert('Job Posted Successfully!');
       navigate('/'); // Home pe wapas bhej dega
-    })
-    .catch(err => console.log('Error:', err));
+    } catch (err) {
+      console.log('Error:', err);
+    }
   };
 
   return (

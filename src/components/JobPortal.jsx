@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import JobCard from './JobCard';
+import { apiFetch } from '../api';
 
 const JobPortal = () => {
   const [jobs, setJobs] = useState([]);
@@ -14,53 +15,61 @@ const JobPortal = () => {
   const [salary, setSalary] = useState("");
   const [type, setType] = useState("");
 
-  // Backend se jobs laane ke liye
+  // Backend se jobs laane ke liye (with timeout)
   useEffect(() => {
+    let mounted = true;
     setLoading(true);
     setError(null);
 
-    fetch(`${import.meta.env.VITE_API_URL}/jobs`)
-      .then(res => {
+    (async () => {
+      try {
+        const res = await apiFetch(`${import.meta.env.VITE_API_URL}/jobs`, {}, 8000);
         if (!res.ok) throw new Error('Failed to fetch jobs');
-        return res.json();
-      })
-      .then(data => {
+        const data = await res.json();
         console.log("Backend se data aaya:", data);
-        setJobs(data.data);
-        setLoading(false);
-      })
-      .catch(err => {
+        if (mounted) {
+          setJobs(data.data);
+          setLoading(false);
+        }
+      } catch (err) {
         console.log("Error:", err);
-        setError(err.message);
-        setLoading(false);
-      });
+        if (mounted) {
+          setError(err.name === 'AbortError' ? 'Request timed out' : err.message);
+          setLoading(false);
+        }
+      }
+    })();
+
+    return () => { mounted = false; };
   }, []);
 
   // Nayi job add karne ke liye
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch(`${import.meta.env.VITE_API_URL}/jobs`,{
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        title,
-        company,
-        location,
-        type,
-        salary: salary ? parseInt(salary) : null
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        setJobs(prevJobs => [...prevJobs, data]);
-        setTitle("");
-        setCompany("");
-        setLocation("");
-        setType("");
-        setSalary(""); 
-      })
-      .catch(err => console.log("Add job error:", err));
+    try {
+      const res = await apiFetch(`${import.meta.env.VITE_API_URL}/jobs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title,
+          company,
+          location,
+          type,
+          salary: salary ? parseInt(salary) : null
+        })
+      }, 8000);
+
+      const data = await res.json();
+      setJobs(prevJobs => [...prevJobs, data]);
+      setTitle("");
+      setCompany("");
+      setLocation("");
+      setType("");
+      setSalary("");
+    } catch (err) {
+      console.log("Add job error:", err);
+    }
   };
 
   const handleDelete = async (id, e) => {
@@ -68,10 +77,10 @@ const JobPortal = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-        await fetch(`${import.meta.env.VITE_API_URL}/jobs/${id}`, {
+        await apiFetch(`${import.meta.env.VITE_API_URL}/jobs/${id}`, {
           method: 'DELETE'
-        }
-      );
+        }, 8000);
+
 
       setJobs(prevJobs =>
         prevJobs.filter(job => job._id !== id)
